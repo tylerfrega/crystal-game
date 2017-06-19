@@ -4,6 +4,8 @@ var btnOneValue;
 var btnTwoValue;
 var btnThreeValue;
 var btnFourValue;
+var wins = 0;
+var losses = 0;
 
 
 function setValues(){
@@ -13,6 +15,7 @@ function setValues(){
 	btnTwoValue = Math.floor(Math.random() * (12 - 1) + 1);
 	btnThreeValue = Math.floor(Math.random() * (12 - 1) + 1);
 	btnFourValue = Math.floor(Math.random() * (12 - 1) + 1);
+	currentScore = 0;
 
 //sets value to buttons
 	$('#one').val(btnOneValue);
@@ -27,10 +30,28 @@ function setValues(){
 	$('#four').val(btnFourValue);
 	console.log($('#four').attr('value'));
 
-	console.log('the goal is ' + goal);
+	$('#goal').html('The goal is: ' + goal);
 
 
 };
+
+//checks score displays win/loss
+function checkScore(){
+	if (currentScore > goal){
+		losses ++;
+		$('#losses').html('Losses:      ' + losses);
+		setValues();
+		console.log('you lose');
+	}else if(currentScore === goal){
+		wins ++;
+		$('#wins').html('Wins:     ' + wins);
+		setValues();
+		console.log('you win');
+	}else{ return
+	}
+
+};
+
 
 //on click, adds button value to current score 
 $('#one').on('click', function(){
@@ -60,20 +81,6 @@ $('#four').on('click', function(){
 
 	$('#score').html('Current Score is:    ' + currentScore);
 });
-
-
-function checkScore(){
-	if (currentScore > goal){
-		console.log('you lose');
-	}else if(currentScore === goal){
-		console.log('you win');
-	}else{ return
-	}
-
-};
-
-
-
 
 
 
