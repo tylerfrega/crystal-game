@@ -53,7 +53,7 @@ function checkScore(){
 };
 
 
-//on click, adds button value to current score 
+//on click, adds button value to current score checks for win/loss
 $('#one').on('click', function(){
 	currentScore = btnOneValue + currentScore;
 	checkScore();
